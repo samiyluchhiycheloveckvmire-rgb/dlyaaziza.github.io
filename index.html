@@ -32,12 +32,27 @@
             background: var(--bg-gradient);
             color: var(--text);
             line-height: 1.6;
-            cursor: default;
             overflow-x: hidden;
             min-height: 100vh;
+            cursor: default;
         }
 
-        /* ===== ФОНОВЫЙ УЗОР ===== */
+        /* ===== СТИЛИЗОВАННЫЙ СКРОЛЛБАР ===== */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--pink);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--pink-light);
+        }
+
+        /* ===== ФОНОВОЙ УЗОР ===== */
         .bg-pattern {
             position: fixed;
             top: 0;
@@ -88,34 +103,6 @@
                 transform: translateY(-10vh) rotate(720deg) scale(1);
                 opacity: 0;
             }
-        }
-
-        /* ===== КАСТОМНЫЙ КУРСОР ===== */
-        .cursor {
-            width: 24px;
-            height: 24px;
-            border: 2px solid var(--pink-light);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: all 0.15s ease;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 30px var(--pink-glow);
-            backdrop-filter: blur(2px);
-        }
-
-        .cursor-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--pink-light);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: all 0.1s ease;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 20px var(--pink-glow);
         }
 
         /* ===== КОНТЕЙНЕР ===== */
@@ -193,7 +180,6 @@
         .nav-links a:hover {
             color: #fff;
         }
-
         .nav-links a:hover::after {
             width: 100%;
         }
@@ -367,7 +353,6 @@
 
         .time-block .number.seconds {
             font-size: 42px;
-            color: var(--pink-light);
             background: linear-gradient(135deg, var(--pink-light), #ffb3c6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -451,7 +436,7 @@
             letter-spacing: 2px;
         }
 
-        /* ===== ИСТОРИЯ ===== */
+        /* ===== НАША ИСТОРИЯ (ОБНОВЛЕННАЯ) ===== */
         .timeline {
             display: flex;
             flex-direction: column;
@@ -777,24 +762,6 @@
             text-shadow: 0 0 40px var(--pink-glow);
         }
 
-        /* ===== СКРОЛЛБАР ===== */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-dark);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--pink);
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--pink-light);
-        }
-
         /* ===== АДАПТИВ ===== */
         @media (max-width: 768px) {
             .hero h1 {
@@ -936,10 +903,6 @@
 <!-- ===== ФОНОВОЙ УЗОР ===== -->
 <div class="bg-pattern"></div>
 
-<!-- ===== КАСТОМНЫЙ КУРСОР ===== -->
-<div class="cursor"></div>
-<div class="cursor-dot"></div>
-
 <!-- ===== ПАРЯЩИЕ СЕРДЕЧКИ ===== -->
 <div class="floating-hearts" id="floatingHearts"></div>
 
@@ -995,35 +958,40 @@
         </div>
     </section>
 
-    <!-- ===== ИСТОРИЯ ===== -->
+    <!-- ===== НАША ИСТОРИЯ (ОБНОВЛЕННАЯ) ===== -->
     <section id="story">
         <h2 class="section-title">📖 Наша <span>история</span></h2>
         <p class="section-sub">Как всё начиналось и продолжается</p>
 
         <div class="timeline">
             <div class="timeline-item">
+                <span class="date">23 марта 2025</span>
+                <span class="desc">💫 Мы познакомились. Судьба свела нас вместе.</span>
+                <span class="emoji">✨</span>
+            </div>
+            <div class="timeline-item">
                 <span class="date">27 марта 2025</span>
-                <span class="desc">✨ Первая встреча. Я понял, что ты — особенная.</span>
-                <span class="emoji">💘</span>
+                <span class="desc">💕 Мы начали встречаться. Самый счастливый день.</span>
+                <span class="emoji">💞</span>
             </div>
             <div class="timeline-item">
-                <span class="date">1 апреля 2025</span>
-                <span class="desc">🌸 Начало нашей переписки. Ты украла моё сердце.</span>
-                <span class="emoji">💬</span>
+                <span class="date">Апрель 2025</span>
+                <span class="desc">💋 Наш первый поцелуй. Это было невероятно.</span>
+                <span class="emoji">😘</span>
             </div>
             <div class="timeline-item">
-                <span class="date">14 мая 2025</span>
-                <span class="desc">☀️ Наше первое свидание в парке.</span>
-                <span class="emoji">🌳</span>
+                <span class="date">Апрель 2025</span>
+                <span class="desc">🏕️ Незабываемое время в лагере. Лучшие дни.</span>
+                <span class="emoji">🌅</span>
             </div>
             <div class="timeline-item">
-                <span class="date">1 июня 2025</span>
-                <span class="desc">🎵 Ты подарила мне песню. Я слушаю её каждый день.</span>
-                <span class="emoji">🎶</span>
+                <span class="date">Июнь 2025</span>
+                <span class="desc">🌙 Наша первая ночёвка. Особенный момент.</span>
+                <span class="emoji">🌃</span>
             </div>
             <div class="timeline-item">
                 <span class="date">26 июля 2026</span>
-                <span class="desc">💖 Сегодня. Я пишу этот сайт для тебя.</span>
+                <span class="desc">💖 Сегодня. Я создаю этот сайт для тебя.</span>
                 <span class="emoji">💻</span>
             </div>
             <div class="timeline-item">
@@ -1217,43 +1185,6 @@
                 navbar.classList.remove('scrolled');
             }
         });
-    })();
-
-    // ===== КАСТОМНЫЙ КУРСОР =====
-    (function() {
-        const cursor = document.querySelector('.cursor');
-        const dot = document.querySelector('.cursor-dot');
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            dot.style.left = e.clientX + 'px';
-            dot.style.top = e.clientY + 'px';
-        });
-
-        document.addEventListener('mouseleave', () => {
-            cursor.style.opacity = '0';
-            dot.style.opacity = '0';
-        });
-
-        document.addEventListener('mouseenter', () => {
-            cursor.style.opacity = '1';
-            dot.style.opacity = '1';
-        });
-
-        document.querySelectorAll('a, button, .music-player, .timeline-item, .heart-card, .reason-item, .about-card')
-            .forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    cursor.style.transform = 'translate(-50%, -50%) scale(1.6)';
-                    cursor.style.borderColor = '#fff';
-                    cursor.style.boxShadow = '0 0 50px rgba(212, 90, 122, 0.4)';
-                });
-                el.addEventListener('mouseleave', () => {
-                    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-                    cursor.style.borderColor = 'var(--pink-light)';
-                    cursor.style.boxShadow = '0 0 30px var(--pink-glow)';
-                });
-            });
     })();
 
     // ===== МУЗЫКАЛЬНЫЙ ПЛЕЕР =====
