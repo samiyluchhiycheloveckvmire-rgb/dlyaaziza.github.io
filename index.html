@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наша история любви ❤️ Костя & Азиза</title>
+    <!-- Подключаем шрифт для красоты -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fcf6f8;
+            color: #3a2a33;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Стили для красивых сердечек в фоне */
+        .bg-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+            opacity: 0.05;
+            font-size: 40px;
+            letter-spacing: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            transform: rotate(-15deg) scale(1.5);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== ШАПКА ===== */
+        .navbar {
+            padding: 25px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid rgba(214, 145, 166, 0.2);
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #b34a6b;
+            letter-spacing: 1px;
+        }
+        .logo span {
+            color: #e07a9e;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            font-weight: 400;
+            font-size: 16px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #3a2a33;
+            transition: color 0.3s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 5px;
+        }
+        .nav-links a:hover {
+            color: #b34a6b;
+            border-bottom-color: #e07a9e;
+        }
+
+        /* ===== ГЛАВНЫЙ БЛОК (ТАЙМЕР) ===== */
+        .hero {
+            padding: 60px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 58px;
+            background: linear-gradient(135deg, #b34a6b, #d47b9a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .hero .sub {
+            font-size: 22px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            color: #5f4a54;
+        }
+
+        .hero .names {
+            font-size: 20px;
+            font-weight: 400;
+            background: rgba(255, 255, 255, 0.6);
+            display: inline-block;
+            padding: 8px 30px;
+            border-radius: 50px;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 15px rgba(179, 74, 107, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .hero .names i {
+            color: #e07a9e;
+            font-style: normal;
+        }
+
+        /* Счетчик */
+        .timer-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 70px;
+            box-shadow: 0 20px 60px rgba(179, 74, 107, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .time-block {
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .time-block .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 54px;
+            font-weight: 700;
+            color: #b34a6b;
+            line-height: 1;
+            display: block;
+        }
+
+        .time-block .label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #7a6270;
+            margin-top: 5px;
+        }
+
+        .time-block .number.seconds {
+            font-size: 38px;
+            color: #d47b9a;
+        }
+
+        /* ===== РАЗДЕЛЫ ===== */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(214, 145, 166, 0.15);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            text-align: center;
+            margin-bottom: 15px;
+            color: #2d1f26;
+        }
+
+        .section-title span {
+            color: #b34a6b;
+        }
+
+        .section-sub {
+            text-align: center;
+            font-weight: 300;
+            color: #6d5563;
+            margin-bottom: 50px;
+            font-size: 18px;
+        }
+
+        /* ===== НАША ИСТОРИЯ ===== */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            background: white;
+            padding: 18px 30px;
+            border-radius: 60px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            border-left: 6px solid #e07a9e;
+            transition: all 0.3s;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(179, 74, 107, 0.08);
+        }
+
+        .timeline-item .date {
+            font-weight: 700;
+            color: #b34a6b;
+            font-size: 18px;
+            min-width: 120px;
+        }
+
+        .timeline-item .desc {
+            font-weight: 400;
+            color: #3a2a33;
+        }
+
+        .timeline-item .emoji {
+            font-size: 28px;
+            margin-left: auto;
+        }
+
+        /* ===== ГАЛЕРЕЯ СЕРДЕЦ ===== */
+        .heart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .heart-card {
+            background: white;
+            padding: 25px 10px;
+            border-radius: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+            transition: 0.3s;
+            border: 1px solid rgba(214, 145, 166, 0.1);
+        }
+
+        .heart-card:hover {
+            transform: translateY(-10px);
+            border-color: #e07a9e;
+        }
+
+        .heart-card .big-emoji {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .heart-card .h-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #5f4a54;
+        }
+
+        /* ===== О НАС ===== */
+        .about-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .about-card {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 50px;
+            min-width: 200px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(179, 74, 107, 0.05);
+            border: 1px solid rgba(214, 145, 166, 0.15);
+        }
+
+        .about-card .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            color: #2d1f26;
+        }
+
+        .about-card .age {
+            font-size: 18px;
+            color: #b34a6b;
+            font-weight: 600;
+        }
+
+        .about-card .role {
+            font-size: 15px;
+            color: #7a6270;
+            margin-top: 5px;
+        }
+
+        .heart-divider {
+            font-size: 40px;
+            color: #e07a9e;
+            display: flex;
+            align-items: center;
+        }
+
+        /* ===== ПОЧЕМУ Я ЛЮБЛЮ ===== */
+        .reasons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .reason-item {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 40px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .reason-item:hover {
+            border-color: #e07a9e;
+            background: #fff9fb;
+        }
+
+        .reason-item .r-emoji {
+            font-size: 40px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .reason-item p {
+            font-weight: 400;
+            color: #3a2a33;
+        }
+
+        /* ===== ФУТЕР ===== */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: #7a6270;
+            font-weight: 300;
+            font-size: 16px;
+        }
+
+        footer .big-heart {
+            color: #e07a9e;
+            display: inline-block;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 38px;
+            }
+            .timer-wrapper {
+                flex-direction: row;
+                padding: 25px 15px;
+                gap: 15px;
+                border-radius: 40px;
+            }
+            .time-block .number {
+                font-size: 38px;
+            }
+            .time-block .number.seconds {
+                font-size: 28px;
+            }
+            .time-block {
+                min-width: 60px;
+            }
+            .timeline-item {
+                flex-wrap: wrap;
+                border-radius: 30px;
+                padding: 15px 20px;
+            }
+            .timeline-item .date {
+                min-width: 100%;
+                font-size: 16px;
+            }
+            .timeline-item .emoji {
+                margin-left: 0;
+            }
+            .nav-links {
+                gap: 15px;
+                font-size: 14px;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 10px;
+            }
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+            }
+            .about-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .heart-divider {
+                transform: rotate(90deg);
+            }
+            .section-title {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .timer-wrapper {
+                gap: 8px;
+                padding: 15px 10px;
+            }
+            .time-block .number {
+                font-size: 28px;
+            }
+            .time-block .number.seconds {
+                font-size: 20px;
+            }
+            .time-block .label {
+                font-size: 10px;
+            }
+            .hero h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Фоновые сердечки (декор) -->
+<div class="bg-hearts">❤️ 💖 ❤️ 💕 ❤️ 💗 ❤️ 💖 ❤️ 💕 ❤️ 💗</div>
+
+<div class="container">
+
+    <!-- ===== ШАПКА ===== -->
+    <nav class="navbar">
+        <div class="logo">❤️ <span>К</span>остя & <span>А</span>зиза</div>
+        <div class="nav-links">
+            <a href="#timer">Таймер</a>
+            <a href="#story">История</a>
+            <a href="#gallery">Чувства</a>
+            <a href="#about">О нас</a>
+            <a href="#reasons">Почему</a>
+        </div>
+    </nav>
+
+    <!-- ===== ГЛАВНЫЙ ЭКРАН С ТАЙМЕРОМ ===== -->
+    <section class="hero" id="timer">
+        <h1>Наша история любви</h1>
+        <p class="sub">Самые прекрасные дни моей жизни</p>
+        <div class="names">
+            <i>Костя</i> 💕 <i>Азиза</i> &nbsp;·&nbsp; вместе с 27 марта 2025
+        </div>
+
+        <div class="timer-wrapper">
+            <div class="time-block">
+                <span class="number" id="days">0</span>
+                <span class="label">Дней</span>
+            </div>
+            <div class="time-block">
+                <span class="number" id="hours">0</span>
+                <span class="label">Часов</span>
+            </div>
+            <div class="time-block">
+                <span class="number" id="minutes">0</span>
+                <span class="label">Минут</span>
+            </div>
+            <div class="time-block">
+                <span class="number seconds" id="seconds">0</span>
+                <span class="label">Секунд</span>
+            </div>
+        </div>
+        <p style="margin-top: 25px; font-weight: 300; color: #7a6270; font-size: 14px;">С каждым мигом я люблю тебя всё сильнее</p>
+    </section>
+
+    <!-- ===== НАША ИСТОРИЯ ===== -->
+    <section id="story">
+        <h2 class="section-title">📖 Наша <span>история</span></h2>
+        <p class="section-sub">Как всё начиналось и продолжается</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="date">27 марта 2025</span>
+                <span class="desc">✨ Первая встреча. Я понял, что ты — особенная.</span>
+                <span class="emoji">💘</span>
+            </div>
+            <div class="timeline-item">
+                <span class="date">1 апреля 2025</span>
+                <span class="desc">🌸 Начало нашей переписки. Ты украла моё сердце.</span>
+                <span class="emoji">💬</span>
+            </div>
+            <div class="timeline-item">
+                <span class="date">14 мая 2025</span>
+                <span class="desc">☀️ Наше первое свидание в парке.</span>
+                <span class="emoji">🌳</span>
+            </div>
+            <div class="timeline-item">
+                <span class="date">1 июня 2025</span>
+                <span class="desc">🎵 Ты подарила мне песню. Я слушаю её каждый день.</span>
+                <span class="emoji">🎶</span>
+            </div>
+            <div class="timeline-item">
+                <span class="date">26 июля 2026</span>
+                <span class="desc">💖 Сегодня. Я пишу этот сайт для тебя.</span>
+                <span class="emoji">💻</span>
+            </div>
+            <div class="timeline-item" style="border-left-color: #b34a6b; background: #fceff3;">
+                <span class="date">∞ будущее</span>
+                <span class="desc">🌟 Мы будем вместе всегда. Это только начало.</span>
+                <span class="emoji">♾️</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ГАЛЕРЕЯ СЕРДЕЦ ===== -->
+    <section id="gallery">
+        <h2 class="section-title">💕 Мои <span>чувства</span> к тебе</h2>
+        <p class="section-sub">Каждый день я нахожу новую причину любить тебя</p>
+
+        <div class="heart-grid">
+            <div class="heart-card">
+                <span class="big-emoji">❤️</span>
+                <span class="h-label">Любовь</span>
+            </div>
+            <div class="heart-card">
+                <span class="big-emoji">💖</span>
+                <span class="h-label">Нежность</span>
+            </div>
+            <div class="heart-card">
+                <span class="big-emoji">💗</span>
+                <span class="h-label">Забота</span>
+            </div>
+            <div class="heart-card">
+                <span class="big-emoji">💕</span>
+                <span class="h-label">Привязанность</span>
+            </div>
+            <div class="heart-card">
+                <span class="big-emoji">💘</span>
+                <span class="h-label">Страсть</span>
+            </div>
+            <div class="heart-card">
+                <span class="big-emoji">💝</span>
+                <span class="h-label">Счастье</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== О НАС ===== -->
+    <section id="about">
+        <h2 class="section-title">👫 Кто <span>мы</span></h2>
+        <p class="section-sub">Две половинки одного целого</p>
+
+        <div class="about-grid">
+            <div class="about-card">
+                <div class="name">Костя</div>
+                <div class="age">15 лет</div>
+                <div class="role">Твой парень ❤️</div>
+            </div>
+            <div class="heart-divider">💗</div>
+            <div class="about-card">
+                <div class="name">Азиза</div>
+                <div class="age">14 лет</div>
+                <div class="role">Моя девочка 💕</div>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 30px; font-style: italic; color: #7a6270; font-size: 18px;">
+            «Мы разные, но вместе мы — целая вселенная»
+        </p>
+    </section>
+
+    <!-- ===== ПОЧЕМУ Я ЛЮБЛЮ ТЕБЯ ===== -->
+    <section id="reasons">
+        <h2 class="section-title">💭 Почему я <span>люблю</span> тебя</h2>
+        <p class="section-sub">Тысячи причин, но вот самые главные</p>
+
+        <div class="reasons">
+            <div class="reason-item">
+                <span class="r-emoji">🌟</span>
+                <p>Твоя улыбка освещает мой день, даже когда всё плохо.</p>
+            </div>
+            <div class="reason-item">
+                <span class="r-emoji">👀</span>
+                <p>В твоих глазах я вижу весь мир и своё будущее.</p>
+            </div>
+            <div class="reason-item">
+                <span class="r-emoji">🎀</span>
+                <p>Ты — самая добрая и заботливая девочка на свете.</p>
+            </div>
+            <div class="reason-item">
+                <span class="r-emoji">☀️</span>
+                <p>Рядом с тобой я становлюсь лучше и сильнее.</p>
+            </div>
+            <div class="reason-item">
+                <span class="r-emoji">💎</span>
+                <p>Ты уникальная. Таких, как ты, больше нет.</p>
+            </div>
+            <div class="reason-item">
+                <span class="r-emoji">🌹</span>
+                <p>Каждый момент с тобой — это бесценный подарок.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ФУТЕР ===== -->
+    <footer>
+        <p>
+            Сделано с <span class="big-heart">❤️</span> для самой прекрасной Азизы.
+            <br>Костя, 26 июля 2026. Наша любовь вечна.
+        </p>
+        <p style="margin-top: 10px; font-size: 14px; opacity: 0.6;">
+            💕 Спасибо, что ты есть у меня 💕
+        </p>
+    </footer>
+
+</div>
+
+<!-- ===== СКРИПТ ДЛЯ ТАЙМЕРА ===== -->
+<script>
+    (function() {
+        // Дата начала отношений: 27 марта 2025 года
+        const startDate = new Date(2025, 2, 27); // Месяцы в JS идут с 0 (0 - январь, 2 - март)
+        const now = new Date(); // 26 июля 2026
+
+        function updateTimer() {
+            const current = new Date();
+            const diff = current - startDate; // разница в миллисекундах
+
+            if (diff <= 0) {
+                document.getElementById('days').textContent = '0';
+                document.getElementById('hours').textContent = '0';
+                document.getElementById('minutes').textContent = '0';
+                document.getElementById('seconds').textContent = '0';
+                return;
+            }
+
+            const seconds = Math.floor(diff / 1000);
+            const minutes = Math.floor(seconds / 60);
+            const hours = Math.floor(minutes / 60);
+            const days = Math.floor(hours / 24);
+
+            const remainSeconds = seconds % 60;
+            const remainMinutes = minutes % 60;
+            const remainHours = hours % 24;
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = String(remainHours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(remainMinutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(remainSeconds).padStart(2, '0');
+        }
+
+        updateTimer();
+        setInterval(updateTimer, 1000);
+
+        // Показываем точную дату в консоли (для проверки)
+        console.log('Дата начала: 27 марта 2025');
+        console.log('Сегодня: 26 июля 2026');
+    })();
+</script>
+
+</body>
+</html>
